@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VERA Sartoria Merceria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/stileVera.css" />
+    <link rel="shortcut icon" href="/logorosso.ico" />
+  </head>
+  <body >
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><span class="vera">VERA</span> Sartoria & Merceria</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav" >
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Prodotti
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/filati">Filati</a></li>
+            <li><a class="dropdown-item" href="/uncinetti">Uncinetti</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contatti">Contatti</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/whishlist">WhishList</a>
+        </li>
+        
+        <li class="nav-item dropdown" th:if="${valueAdmin}">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Gestisci db
+          </a>
+          <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="/addFilatoDb">Aggiungi filato</a></li>
+            <li><a class="dropdown-item" href="/addUncinettoDb">Aggiungi uncinetto</a></li>
+            <li><a class="dropdown-item" href="/filati">Gestisci filati</a></li>
+            <li><a class="dropdown-item" href="/uncinetti">Gestisci uncinetti</a></li>
+          </ul>
+        </li>
+        
+        
+        <li class ="nav-item">
+        <span  th:if="${#request.userPrincipal}" style="display:flex;">
+        <span class="navbar-text" th:text="${#request.userPrincipal.principal.username}"></span>
+          <span ><a class="nav-link" href="/logout">Logout</a></span>
+         </span>
+         </li>
+        
+        
+      
+        
+        <li class="nav-item">
+            <span th:unless="${#request.userPrincipal}">
+			<a class="nav-link" href="/login">Login</a></span>
+		</li>
+		
+		
+		
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container my-5 text-center">
+
+    
+    
+    
+    
+    
+    <h1 style="text-align : left">Registrazione nuovo utente</h1>
+	<form class="form" th:action="@{/register}" method="POST">
+	<div>
+			<span th:text="${messaggioErrore}">Errore</span>
+		</div>
+		<div class="imput">
+			<span class="titoloImput">Username:</span>
+				<input class="form-control" type="text" placeholder="username" required th:field="${credentials.username}" />
+			<span th:if="${#fields.hasErrors('credentials.username')}" th:errors="${credentials.username}"
+				th:style="'color:red'">
+			</span>
+		</div>
+		<div class="imput">
+			<span class="titoloImput">Password:</span>
+			<input class="form-control" type="password" placeholder="password" required th:field="${credentials.password}" />
+			<span th:if="${#fields.hasErrors('credentials.password')}" th:errors="${credentials.password}"
+				th:style="'color:red'">
+				</span>
+		</div>
+		<div class="imput">
+			<span class="titoloImput">Nome:</span>
+			<input class="form-control" type="text" placeholder="name" required th:field="${user.name}" />
+			<span th:if="${#fields.hasErrors('user.name')}" th:errors="${user.name}" th:style="'color:red'">
+			</span>
+		</div>
+		<div class="imput">
+			<span class="titoloImput">Cognome:</span>
+			<input class="form-control" type="text" placeholder="surname" required th:field="${user.surname}" />
+			<span th:if="${#fields.hasErrors('user.surname')}" th:errors="${user.surname}" th:style="'color:red'">
+			</span>
+		</div>
+		<div class="imput">
+			<span class="titoloImput">Email:</span>
+			<input class="form-control" type="text" placeholder="email" required th:field="${user.email}" />
+			<span th:if="${#fields.hasErrors('user.email')}" th:errors="${user.email}" th:style="'color:red'">
+			</span>
+		</div>
+	
+			<button type="submit" class="btn btn-outline-primary">Registra</button>
+		
+		
+		
+	</form>
+    
+    
+    
+    
+    
+    
+    
+    
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+</html>

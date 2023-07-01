@@ -1,0 +1,43 @@
+@charset "ISO-8859-1";
+
+
+.imput {
+	display : flex;
+	justify-content : space-between;
+	margin : 10px;
+	}
+
+.form {
+	width : 500px; 
+	display : flex; 
+	flex-direction : column;
+	
+	}
+	
+.titoloImput{
+	margin : 10px;
+}
+
+.formListe{
+	margin-right:20%;
+	margin-left:20%;
+}
+
+.navbar {
+	position:sticky;
+	top:0;
+	z-index:3
+}
+
+.card {
+	background-color: #DC143C;
+	margin-bottom:10px;
+}
+
+.itemImg {
+	width:280px;
+}
+
+
+
+
