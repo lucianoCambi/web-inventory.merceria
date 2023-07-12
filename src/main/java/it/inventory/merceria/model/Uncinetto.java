@@ -17,7 +17,7 @@ public class Uncinetto {
     @NotNull
     @Min(1)
     @Max(20)
-	private Integer misura;
+	private int misura;
 	
     @Min(0)
 	private int qta;
